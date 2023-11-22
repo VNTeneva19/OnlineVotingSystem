@@ -1,5 +1,5 @@
-import net.proteanit.sql.DbUtils;
 
+import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.sql.Connection;
