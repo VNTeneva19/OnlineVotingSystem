@@ -119,6 +119,10 @@ public class AdminLogin extends javax.swing.JFrame {
                 info.setVisible(true);
                 info.setLocationRelativeTo(null);
         }
+        else if (u.isEmpty() || p.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Please enter a username and password!");
+        }
 //        try{
 //            Connection con = getConnection();
 //            pst = con.prepareStatement(query);

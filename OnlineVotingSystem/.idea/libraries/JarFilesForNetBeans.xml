@@ -3,8 +3,19 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/mysql-connector-java-5.1.46.jar!/" />
       <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/rs2xml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/adaptive" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/alwaysencrypted" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/azureactivedirectoryauthentication" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/connections" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/constrained" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/dataclassification" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/datatypes" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/resultsets" />
+      <root url="jar://$PROJECT_DIR$/JarFilesForNetBeans/sqljdbc_12.4.2.0_enu.zip!/sqljdbc_12.4/enu/samples/sparse" />
+    </SOURCES>
   </library>
 </component>
