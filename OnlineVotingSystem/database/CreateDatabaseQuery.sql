@@ -21,3 +21,12 @@ student_name VARCHAR(50) NOT NULL,
 [password] VARCHAR(50) NOT NULL,
 [status] VARCHAR(50) NOT NULL
 )
+
+CREATE TABLE [admin] (
+id_number INT IDENTITY(1,1)  PRIMARY KEY NOT NULL,
+username VARCHAR(50) NOT NULL,
+[password] VARCHAR(50) NOT NULL,
+)
+
+INSERT INTO [admin] (username, [password])
+VALUES ('admin', 'admin')
