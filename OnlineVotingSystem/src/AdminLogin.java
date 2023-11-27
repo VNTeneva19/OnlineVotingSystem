@@ -105,47 +105,42 @@ public class AdminLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         String u = user.getText();
         String p = pass.getText();
-        String query ="SELECT username,password from admin where username='"+u+"'  AND password='"+p+"'     ";
 
-        if(u.equals("admin") && p.equals("admin")) {
-            JOptionPane.showMessageDialog(null,"Success Login!");
+        if (u.isEmpty() || p.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter a username and password!");
+            return; // Stop further execution
+        }
+
+        String query ="SELECT username,password from admin where username='" + u + "'  AND password='" + p + "'     ";
+        try {
+            Connection con = getConnection(); // Implement this method to establish DB connection
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, u);
+            pst.setString(2, p);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                rs.close();
+                pst.close();
+                JOptionPane.showMessageDialog(null, "Success Login! " + u + " " + p);
 
                 setVisible(false);
                 AdminMenu info = new AdminMenu();
                 info.setVisible(true);
                 info.setLocationRelativeTo(null);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password!");
+            }
+            rs.close();
+            pst.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else if (u.isEmpty() || p.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter a username and password!");
-        }
-//        try{
-//            Connection con = getConnection();
-//            pst = con.prepareStatement(query);
-//            rs = pst.executeQuery();
-//
-//            if(rs.next()){
-//                rs.close();
-//                pst.close();
-//                JOptionPane.showMessageDialog(null,"Success Login!"+" "+u +""+p);
-//
-//                setVisible(false);
-//                AdminMenu info = new AdminMenu();
-//                info.setVisible(true);
-//                info.setLocationRelativeTo(null);
-//            }
-//            else if (u.isEmpty() || p.isEmpty()) {
-//                JOptionPane.showMessageDialog(null,"Please enter a username and password!");
-//            }
-//        }
-//        catch(Exception e){
-//        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
