@@ -109,7 +109,7 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(620, 550, 190, 60);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("/icons/login.png")); // NOI18N
         jButton1.setToolTipText("LOGIN");
         jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -15,20 +15,12 @@ public class AdminLogin extends javax.swing.JFrame {
     }
 
     public Connection getConnection(){
-
-        try{                                                                        //username //database         =pass no password
-            Connection con = (Connection) DriverManager.getConnection("C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\DATA\\voting_system");
-            return con;
-//            if (con != null) {
-//                // Prepare your SQL statement
-//                PreparedStatement preparedStatement = con.prepareStatement("");
-//                // ...
-//            } else {
-//                // Handle null connection case
-//                System.out.println("Connection is null. Unable to execute query.");
-//            }
-        }
-        catch(Exception e){
+        try {
+            // Establish the connection
+            con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-HGJCNGN\\SQLEXPRESS:1443;Database=voting_system;integratedSecurity=true;encrypt=false;");
+            return con; // Return the connection object after successful connection
+        } catch(Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -129,37 +121,48 @@ public class AdminLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        // Get username and password from text fields
         String u = user.getText();
         String p = pass.getText();
 
+        // Check if the username or password fields are empty
         if (u.isEmpty() || p.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter a username and password!");
             return; // Stop further execution
         }
 
-        String query ="SELECT username,password from admin where username='" + u + "'  AND password='" + p + "'     ";
-        try {
-            Connection con = getConnection(); // Implement this method to establish DB connection
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, u);
-            pst.setString(2, p);
-            ResultSet rs = pst.executeQuery();
+        // Construct the SQL query
+        String query ="SELECT username,password from admin where username='" + u + "'  AND password='" + p + "'";
 
-            if (rs.next()) {
+        try {
+            // Obtain the connection using getConnection() method
+            con = getConnection();
+
+            // Check if the connection is established
+            if (con != null) {
+                // Prepare the statement using the obtained connection
+                pst = con.prepareStatement(query);
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    rs.close();
+                    pst.close();
+                    JOptionPane.showMessageDialog(null, "Success Login! " + u + " " + p);
+
+                    // Perform actions after successful login
+                    setVisible(false);
+                    AdminMenu info = new AdminMenu();
+                    info.setVisible(true);
+                    info.setLocationRelativeTo(null);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password!");
+                }
                 rs.close();
                 pst.close();
-                JOptionPane.showMessageDialog(null, "Success Login! " + u + " " + p);
-
-                setVisible(false);
-                AdminMenu info = new AdminMenu();
-                info.setVisible(true);
-                info.setLocationRelativeTo(null);
+                con.close();
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid username or password!");
+                JOptionPane.showMessageDialog(null, "Connection is null. Unable to establish connection.");
             }
-            rs.close();
-            pst.close();
-            con.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
