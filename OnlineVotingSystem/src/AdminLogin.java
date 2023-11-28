@@ -1,5 +1,5 @@
 import java.sql.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class AdminLogin extends javax.swing.JFrame {
     /**
@@ -17,8 +17,16 @@ public class AdminLogin extends javax.swing.JFrame {
     public Connection getConnection(){
 
         try{                                                                        //username //database         =pass no password
-            Connection con = (Connection) DriverManager.getConnection("C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\DATA\\voting_system","root","");
+            Connection con = (Connection) DriverManager.getConnection("C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\DATA\\voting_system");
             return con;
+//            if (con != null) {
+//                // Prepare your SQL statement
+//                PreparedStatement preparedStatement = con.prepareStatement("");
+//                // ...
+//            } else {
+//                // Handle null connection case
+//                System.out.println("Connection is null. Unable to execute query.");
+//            }
         }
         catch(Exception e){
         }
@@ -43,18 +51,33 @@ public class AdminLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setFont(new java.awt.Font("Courier New", 1, 16));
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jButton1.setText("LOGIN");
+        getContentPane().add(jButton1);
+
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin ID");
+        getContentPane().add(jLabel1);
 
+
+        jLabel2.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Password");
+        getContentPane().add(jLabel2);
 
+        jButton2.setFont(new java.awt.Font("Courier New", 1, 16));
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jButton2.setText("Main Menu");
+        getContentPane().add(jButton2);
+
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -82,7 +105,7 @@ public class AdminLogin extends javax.swing.JFrame {
                                                 .addGap(269, 269, 269))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jButton2)
-                                                .addGap(294, 294, 294))))
+                                                .addGap(290, 290, 290))))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +166,11 @@ public class AdminLogin extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

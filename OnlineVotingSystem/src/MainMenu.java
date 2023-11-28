@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.time.LocalDate;
 
 public class MainMenu extends javax.swing.JFrame {
 
@@ -33,7 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("2018-2019");
+        jLabel3.setText("2023-2024");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(480, 230, 430, 40);
 
@@ -83,19 +84,22 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel7.setText("Clock");
+        jLabel7.setText("Date");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(1240, 20, 55, 30);
+        jLabel7.setBounds(1240, 20, 70, 30);
 
-        jLabel8.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        String now = String.valueOf(LocalDate.now());
+
+        jLabel8.setFont(new java.awt.Font("Courier New", 1, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Date");
+        jLabel8.setText(now);
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(1240, 60, 55, 21);
+        jLabel8.setBounds(1200, 60, 120, 25);
+
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 0, 0);
 
-        jButton2.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jButton2.setText("ADMIN");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,23 +120,12 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(660, 310, 90, 100);
 
-        jLabel6.setFont(new java.awt.Font("Tekton Pro", 1, 36)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Courier New", 1, 30)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("VOTE NOW!");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(610, 400, 190, 80);
 
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel4.setText("Copyright ©2018");
-        jLabel4.setIconTextGap(1);
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(630, 660, 165, 21);
-
-        jLabel9.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("All Rights Reserved");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(610, 680, 209, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +142,7 @@ public class MainMenu extends javax.swing.JFrame {
         setVisible(false);
         AdminLogin info = new AdminLogin();
         info.setVisible(true);
+        info.setLocationRelativeTo(null);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
