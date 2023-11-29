@@ -1,4 +1,3 @@
-
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
@@ -8,18 +7,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class AllData extends javax.swing.JFrame {
+public class VotersList extends javax.swing.JFrame {
 
     /**
-     * Creates new form AllData
+     * Creates new form VotersList
      */
-    public AllData() {
+    public VotersList() {
         initComponents();
-        candidate();
+        voters();
     }
 
     public Connection getConnection(){
-        try{                                                                        //username //database         =pass no password
+
+        try{
             Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/voting_system","root","");
             return con;
         }
@@ -28,8 +28,9 @@ public class AllData extends javax.swing.JFrame {
         return null;
     }
 
-    public void candidate(){
-        String sql ="SELECT * FROM candidate";
+    public void voters(){
+
+        String sql ="SELECT student_name,status FROM account";
 
         try{
             Connection con = getConnection();
@@ -37,12 +38,12 @@ public class AllData extends javax.swing.JFrame {
             Statement st;
             st= con.createStatement();
             Rs = st.executeQuery(sql);
-
-            candidateTL.setModel(DbUtils.resultSetToTableModel(Rs));
+            voterstable.setModel(DbUtils.resultSetToTableModel(Rs));
         }
-        catch(Exception e){
+        catch (Exception e){
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,14 +55,14 @@ public class AllData extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        candidateTL = new javax.swing.JTable();
+        voterstable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        candidateTL.setModel(new javax.swing.table.DefaultTableModel(
+        voterstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {},
                         {},
@@ -72,68 +73,73 @@ public class AllData extends javax.swing.JFrame {
 
                 }
         ));
-        candidateTL.addMouseListener(new java.awt.event.MouseAdapter() {
+        voterstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                candidateTLMouseClicked(evt);
+                voterstableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(candidateTL);
+        jScrollPane1.setViewportView(voterstable);
 
-        jButton1.setText("Clear All");
+        jButton1.setText("RESET ALL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Clear");
+        jButton2.setText("RESET");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("MAIN MENU");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                                .addContainerGap())
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(216, 216, 216)
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(73, 73, 73)
+                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(33, 33, 33))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(59, 59, 59)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void voterstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voterstableMouseClicked
+        int T = voterstable.getSelectedRow();
+        TableModel Model =voterstable.getModel();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_voterstableMouseClicked
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int zero =0;
-        String sql ="UPDATE candidate set points="+zero;
+        String stat="no";
+        String sql ="UPDATE account SET status='"+stat+"'  ";
 
         try{
             Connection con = getConnection();
@@ -141,11 +147,13 @@ public class AllData extends javax.swing.JFrame {
             Statement st;
             st = con.createStatement();
             st.executeUpdate(sql);
-            candidate();
+
+            voters();
 
             if (st==st){
                 JOptionPane.showMessageDialog(null, "all is clear");
-                candidate();
+
+                voters();
             }
             else {
                 JOptionPane.showMessageDialog(null, "all is wrong");
@@ -156,25 +164,19 @@ public class AllData extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void candidateTLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_candidateTLMouseClicked
-
-        int T = candidateTL.getSelectedRow();
-        TableModel Model =candidateTL.getModel();
-    }//GEN-LAST:event_candidateTLMouseClicked
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        int T = candidateTL.getSelectedRow();
-        TableModel Model =candidateTL.getModel();
-        String pass = null;
+        int T = voterstable.getSelectedRow();
+        TableModel Model =voterstable.getModel();
 
         try{
-            int zero =0;
-            String sql ="UPDATE candidate set points='"+zero+"'  WHERE candidate_id='"+Model.getValueAt(T,0)+"'   ";
+            String stat="no";
+            String sql ="UPDATE account SET status='"+stat+"' WHERE student_name = '"+Model.getValueAt(T,0)+"' ";
             Connection con = getConnection();
             Statement st = con.createStatement();
             st.executeUpdate(sql);
-            candidate();
+
+            voters();
         }
         catch(Exception e){
         }
@@ -198,29 +200,29 @@ public class AllData extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AllData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AllData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AllData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AllData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AllData().setVisible(true);
+                new VotersList().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable candidateTL;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable voterstable;
     // End of variables declaration//GEN-END:variables
 }
