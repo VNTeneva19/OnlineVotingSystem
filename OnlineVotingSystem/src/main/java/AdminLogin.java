@@ -17,7 +17,7 @@ public class AdminLogin extends javax.swing.JFrame {
     public Connection getConnection(){
         try {
             // Establish the connection
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "kompanska", "admin");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
             return con; // Return the connection object after successful connection
         } catch(Exception e) {
             e.printStackTrace();
