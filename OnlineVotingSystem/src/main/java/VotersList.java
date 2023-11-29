@@ -12,6 +12,9 @@ public class VotersList extends javax.swing.JFrame {
     /**
      * Creates new form VotersList
      */
+
+    Connection con;
+
     public VotersList() {
         initComponents();
         voters();
@@ -19,11 +22,13 @@ public class VotersList extends javax.swing.JFrame {
 
     public Connection getConnection(){
 
-        try{
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/voting_system","root","");
-            return con;
-        }
-        catch(Exception e){
+        try {
+            // Establish the connection
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
+            return con; // Return the connection object after successful connection
+        } catch(Exception e)
+        {
+            e.printStackTrace();
         }
         return null;
     }

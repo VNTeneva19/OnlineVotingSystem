@@ -6,19 +6,23 @@ import java.sql.Statement;
 
 public class ForgotPassword extends javax.swing.JFrame {
     /**
-     * Creates new form forgot
+     * Creates new form ForgotPassword
      */
+
+    Connection con;
     public ForgotPassword() {
         initComponents();
     }
 
     public Connection getConnection(){
 
-        try{                                                                        //username //database         =pass no password
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/voting_system","root","");
-            return con;
-        }
-        catch(Exception e){
+        try {
+            // Establish the connection
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
+            return con; // Return the connection object after successful connection
+        } catch(Exception e)
+        {
+            e.printStackTrace();
         }
         return null;
     }
@@ -31,14 +35,14 @@ public class ForgotPassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        idnumber = new javax.swing.JTextField();
-        jbutton4 = new javax.swing.JButton();
+        JPanel jPanel1 = new JPanel();
+        JLabel jLabel1 = new JLabel();
+        JButton jButton2 = new JButton();
+        JLabel jLabel4 = new JLabel();
+        idNumber = new javax.swing.JTextField();
+        JButton jbutton4 = new JButton();
         pass = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        JLabel jLabel5 = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,8 +63,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setText("ID Number");
 
-        idnumber.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        idnumber.addActionListener(new java.awt.event.ActionListener() {
+        idNumber.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        idNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idnumberActionPerformed(evt);
             }
@@ -107,7 +111,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                                                                                 .addGap(14, 14, 14)))
                                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(pass)
-                                                                        .addComponent(idnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                        .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jButton2))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -125,7 +129,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabel4)
-                                                .addComponent(idnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(idNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jButton2))
                                 .addGap(17, 17, 17)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -169,10 +173,10 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        String id = idnumber.getText();
-        String search = "select password from account where id_number = '"+id+"'   ";
-        if (id.isEmpty() || id.equals(null)){
-            JOptionPane.showMessageDialog(null,"Enter an id_number");
+        String id = idNumber.getText();
+        String search = "select password from account where id_number = '" + id + "'   ";
+        if (id.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Enter username");
         }
         else{
             try{
@@ -188,6 +192,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 }
             }
             catch(Exception e){
+                e.printStackTrace();
             }
         }
         // TODO add your handling code here:
@@ -209,13 +214,8 @@ public class ForgotPassword extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ForgotPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ForgotPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ForgotPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ForgotPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -229,13 +229,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField idnumber;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbutton4;
+    private javax.swing.JTextField idNumber;
     private javax.swing.JTextField pass;
     // End of variables declaration//GEN-END:variables
 }

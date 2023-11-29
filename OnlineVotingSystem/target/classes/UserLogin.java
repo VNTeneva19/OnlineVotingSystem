@@ -19,7 +19,7 @@ public class UserLogin extends javax.swing.JFrame {
     public Connection getConnection(){
 
         try{                                                                        //username //database         =pass no password
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/voting_system","root","");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
             return con;
         }
         catch(Exception e){
@@ -38,11 +38,13 @@ public class UserLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         usertext = new javax.swing.JTextField();
+        passtext = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        passtext = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -83,8 +85,9 @@ public class UserLogin extends javax.swing.JFrame {
                 jButton2InputMethodTextChanged(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -107,6 +110,15 @@ public class UserLogin extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(176, 229, 209));
+        jButton3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jButton3.setText("Forgot Password");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
             }
         });
 
@@ -158,12 +170,15 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void userTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usertextActionPerformed
 
-        String yes="yes";
-        String no="no";
-        String passId=usertext.getText();
-        String login = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+no +"'";
-        String already = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+yes +"'";
-        String incorrect = "SELECT * FROM account WHERE id_number !='"+usertext.getText()+"' AND password != '"+passtext.getText() + " ' ";
+        String passId = usertext.getText();
+        String login = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'no'";
+        String already = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'yes'";
+        String incorrect = "SELECT * FROM account WHERE student_name = ? AND password = ?";
+
+        if (passId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter a username and password!");
+            return;
+        }
 
         try{
             Connection con = getConnection();
@@ -178,7 +193,7 @@ public class UserLogin extends javax.swing.JFrame {
             rs2 = pst2.executeQuery();
             rs = pst.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()){
                 rs.close();
                 pst.close();
                 JOptionPane.showMessageDialog(null,"Success!");
@@ -198,23 +213,26 @@ public class UserLogin extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
+            e.printStackTrace();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_usertextActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        String yes="yes";
-        String no="no";
-        String passid=usertext.getText();
-        String login = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+no +"'";
-        String already = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+yes +"'";
-        String incorrect = "SELECT * FROM account WHERE id_number !='"+usertext.getText()+"' AND password != '"+passtext.getText() + " ' ";
+        String passId = usertext.getText();
+        String login = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'no'";
+        String already = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'yes'";
+        String incorrect = "SELECT * FROM account WHERE student_name = ? AND password = ?";
+
+        if (passId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter a username and password!");
+            return;
+        }
 
         try{
             Connection con = getConnection();
             pst = con.prepareStatement(login);
-            rs = pst.executeQuery();
 
             PreparedStatement pst1= con.prepareStatement(incorrect);
             ResultSet rs1;
@@ -223,13 +241,15 @@ public class UserLogin extends javax.swing.JFrame {
             PreparedStatement pst2= con.prepareStatement(already);
             ResultSet rs2;
             rs2 = pst2.executeQuery();
+            rs = pst.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()){
                 rs.close();
                 pst.close();
-                JOptionPane.showMessageDialog(null,"Sucess!");
+                JOptionPane.showMessageDialog(null,"Success!");
                 setVisible(false);
-                new VotingSystem(passid).setVisible(true);
+
+                new VotingSystem(passId).setVisible(true);
             }
             else if (rs2.next()){
                 JOptionPane.showMessageDialog(null, "You already vote!");
@@ -237,12 +257,13 @@ public class UserLogin extends javax.swing.JFrame {
                 passtext.setText(null);
             }
             else if (rs1.next()){
-                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Passowrd!");
+                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Password!");
                 usertext.setText(null);
                 passtext.setText(null);
             }
         }
         catch(Exception e){
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -252,7 +273,14 @@ public class UserLogin extends javax.swing.JFrame {
         main.setVisible(true);
         main.setLocationRelativeTo(null);
 
-        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        setVisible(false);
+        ForgotPassword main = new ForgotPassword();
+        main.setVisible(true);
+        main.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
@@ -261,12 +289,15 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void jButton2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton2InputMethodTextChanged
 
-        String yes="yes";
-        String no="no";
-        String passid=usertext.getText();
-        String login = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+no +"'";
-        String already = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+yes +"'";
-        String incorrect = "SELECT * FROM account WHERE id_number !='"+usertext.getText()+"' AND password != '"+passtext.getText() + " ' ";
+        String passId = usertext.getText();
+        String login = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'no'";
+        String already = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'yes'";
+        String incorrect = "SELECT * FROM account WHERE student_name = ? AND password = ?";
+
+        if (passId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter a username and password!");
+            return;
+        }
 
         try{
             Connection con = getConnection();
@@ -281,12 +312,13 @@ public class UserLogin extends javax.swing.JFrame {
             rs2 = pst2.executeQuery();
             rs = pst.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()){
                 rs.close();
                 pst.close();
-                JOptionPane.showMessageDialog(null,"Sucess!");
+                JOptionPane.showMessageDialog(null,"Success!");
                 setVisible(false);
-                new VotingSystem(passid).setVisible(true);
+
+                new VotingSystem(passId).setVisible(true);
             }
             else if (rs2.next()){
                 JOptionPane.showMessageDialog(null, "You already vote!");
@@ -294,12 +326,13 @@ public class UserLogin extends javax.swing.JFrame {
                 passtext.setText(null);
             }
             else if (rs1.next()){
-                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Passowrd!");
+                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Password!");
                 usertext.setText(null);
                 passtext.setText(null);
             }
         }
         catch(Exception e){
+            e.printStackTrace();
         }
 
         // TODO add your handling code here:
@@ -318,9 +351,9 @@ public class UserLogin extends javax.swing.JFrame {
         String yes="yes";
         String no="no";
         String passid=usertext.getText();
-        String login = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+no +"'";
-        String already = "SELECT * FROM account WHERE id_number ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+yes +"'";
-        String incorrect = "SELECT * FROM account WHERE id_number !='"+usertext.getText()+"' AND password != '"+passtext.getText() + " ' ";
+        String login = "SELECT * FROM account WHERE student_name ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+no +"'";
+        String already = "SELECT * FROM account WHERE student_name ='"+usertext.getText()+"' AND password = '"+passtext.getText() + " ' AND status = '"+yes +"'";
+        String incorrect = "SELECT * FROM account WHERE student_name !='"+usertext.getText()+"' AND password != '"+passtext.getText() + " ' ";
 
         try{
             Connection con = getConnection();
@@ -338,7 +371,7 @@ public class UserLogin extends javax.swing.JFrame {
             if(rs.next()){
                 rs.close();
                 pst.close();
-                JOptionPane.showMessageDialog(null,"Sucess!");
+                JOptionPane.showMessageDialog(null,"Success!");
                 setVisible(false);
                 new VotingSystem(passid).setVisible(true);
             }
@@ -348,7 +381,7 @@ public class UserLogin extends javax.swing.JFrame {
                 passtext.setText(null);
             }
             else if (rs1.next()){
-                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Passowrd!");
+                JOptionPane.showMessageDialog(null, "Incorrect ID number AND Password!");
                 usertext.setText(null);
                 passtext.setText(null);
             }
@@ -396,6 +429,7 @@ public class UserLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField passtext;
