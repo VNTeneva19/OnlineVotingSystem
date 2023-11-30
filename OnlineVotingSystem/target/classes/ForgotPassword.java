@@ -59,8 +59,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         idNumber.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
 
         jbutton4.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
-        jbutton4.setText("Login Menu");
-        jbutton4.addActionListener(this::jbutton4ActionPerformed);
+        jbutton4.setText("Go Back");
+        jbutton4.addActionListener(this::jButton4ActionPerformed);
 
         pass.setEditable(false);
         pass.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
@@ -134,9 +134,9 @@ public class ForgotPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void jbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton4ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton4ActionPerformed
         setVisible(false);
-        UserLogin info = new UserLogin();
+        AdminMenu info = new AdminMenu();
         info.setVisible(true);
         info.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbutton4ActionPerformed

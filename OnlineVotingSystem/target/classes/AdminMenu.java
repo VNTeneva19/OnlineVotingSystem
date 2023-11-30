@@ -38,7 +38,12 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jButton2.setText("CANDIDATES LIST");
-
+        jButton2.addActionListener(evt -> {
+            setVisible(false);
+            AllData info = new AllData();
+            info.setVisible(true);
+            info.setLocationRelativeTo(null);
+        });
         jButton3.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jButton3.setText("VOTERS LIST");
         jButton3.addActionListener(evt -> {
