@@ -35,12 +35,13 @@ public class AdminLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        JButton jButton1 = new JButton();
-        JButton jButton2 = new JButton();
-        JLabel jLabel1 = new JLabel();
-        JLabel jLabel2 = new JLabel();
+        jButton1 = new javax.swing.JButton();
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+
 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +51,12 @@ public class AdminLogin extends javax.swing.JFrame {
         jButton1.setText("LOGIN");
         getContentPane().add(jButton1);
 
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
 
         jLabel1.setFont(new java.awt.Font("Courier New", Font.BOLD, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -68,7 +74,11 @@ public class AdminLogin extends javax.swing.JFrame {
         jButton2.setText("Main Menu");
         getContentPane().add(jButton2);
 
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +203,11 @@ public class AdminLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new AdminLogin().setVisible(true));
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables

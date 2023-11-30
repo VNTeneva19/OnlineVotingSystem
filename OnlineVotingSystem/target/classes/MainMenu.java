@@ -12,18 +12,19 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        JLabel jLabel3 = new JLabel();
-        JLabel jLabel1 = new JLabel();
-        JPanel jPanel1 = new JPanel();
-        JLabel jLabel5 = new JLabel();
-        JPanel jPanel3 = new JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        JLabel jLabel8 = new JLabel();
-        JLabel jLabel2 = new JLabel();
-        JButton jButton2 = new JButton();
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        JButton jButton1 = new JButton();
-        JLabel jLabel6 = new JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -158,7 +159,18 @@ public class MainMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new MainMenu().setVisible(true));
 
     }
-
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

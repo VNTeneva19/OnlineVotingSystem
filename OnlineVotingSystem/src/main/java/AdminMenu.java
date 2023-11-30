@@ -18,17 +18,17 @@ public class AdminMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        JButton jButton1 = new JButton();
-        JButton jButton2 = new JButton();
-        JButton jButton3 = new JButton();
-        JButton jButton4 = new JButton();
-        JMenuBar jMenuBar1 = new JMenuBar();
-        JMenu jMenu1 = new JMenu();
-        JMenu jMenu3 = new JMenu();
-        JMenu jMenu4 = new JMenu();
-        JMenu jMenu2 = new JMenu();
-        JMenu jMenu5 = new JMenu();
-        JMenu jMenu6 = new JMenu();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,5 +176,17 @@ public class AdminMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new AdminMenu().setVisible(true));
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

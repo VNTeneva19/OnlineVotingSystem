@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -34,60 +35,44 @@ public class ForgotPassword extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        JPanel jPanel1 = new JPanel();
-        JLabel jLabel1 = new JLabel();
-        JButton jButton2 = new JButton();
-        JLabel jLabel4 = new JLabel();
+        setLocationRelativeTo(null);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         idNumber = new javax.swing.JTextField();
-        JButton jbutton4 = new JButton();
+        jbutton4 = new javax.swing.JButton();
         pass = new javax.swing.JTextField();
-        JLabel jLabel5 = new JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel1.setText("Account Recovery");
 
-        jButton2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jButton2.setText("Search");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
-        jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jLabel4.setText("ID Number");
 
-        idNumber.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
-        idNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idnumberActionPerformed(evt);
-            }
-        });
+        idNumber.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
+        idNumber.addActionListener(this::idnumberActionPerformed);
 
-        jbutton4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jbutton4.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jbutton4.setText("Login Menu");
-        jbutton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbutton4ActionPerformed(evt);
-            }
-        });
+        jbutton4.addActionListener(this::jbutton4ActionPerformed);
 
         pass.setEditable(false);
-        pass.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        pass.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passActionPerformed(evt);
-            }
-        });
+        pass.addActionListener(this::passActionPerformed);
 
-        jLabel5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("YOUR PASSWORD HERE");
 
@@ -201,7 +186,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -221,15 +206,17 @@ public class ForgotPassword extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ForgotPassword().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new ForgotPassword().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField idNumber;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbutton4;
     private javax.swing.JTextField pass;
     // End of variables declaration//GEN-END:variables
 }

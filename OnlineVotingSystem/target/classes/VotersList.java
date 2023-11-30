@@ -43,7 +43,7 @@ public class VotersList extends javax.swing.JFrame {
             Statement st;
             st= con.createStatement();
             Rs = st.executeQuery(sql);
-            voterstable.setModel(DbUtils.resultSetToTableModel(Rs));
+            voterStable.setModel(DbUtils.resultSetToTableModel(Rs));
         }
         catch (Exception e){
         }
@@ -60,14 +60,14 @@ public class VotersList extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        voterstable = new javax.swing.JTable();
+        voterStable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        voterstable.setModel(new javax.swing.table.DefaultTableModel(
+        voterStable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {},
                         {},
@@ -78,12 +78,12 @@ public class VotersList extends javax.swing.JFrame {
 
                 }
         ));
-        voterstable.addMouseListener(new java.awt.event.MouseAdapter() {
+        voterStable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                voterstableMouseClicked(evt);
+                voterStableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(voterstable);
+        jScrollPane1.setViewportView(voterStable);
 
         jButton1.setText("RESET ALL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,9 +135,9 @@ public class VotersList extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voterstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voterstableMouseClicked
-        int T = voterstable.getSelectedRow();
-        TableModel Model =voterstable.getModel();
+    private void voterStableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_voterstableMouseClicked
+        int T = voterStable.getSelectedRow();
+        TableModel Model = voterStable.getModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_voterstableMouseClicked
 
@@ -156,7 +156,7 @@ public class VotersList extends javax.swing.JFrame {
             voters();
 
             if (st==st){
-                JOptionPane.showMessageDialog(null, "all is clear");
+                JOptionPane.showMessageDialog(null, "All of the students have not voted");
 
                 voters();
             }
@@ -165,14 +165,14 @@ public class VotersList extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
+            e.printStackTrace();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        int T = voterstable.getSelectedRow();
-        TableModel Model =voterstable.getModel();
+        int T = voterStable.getSelectedRow();
+        TableModel Model = voterStable.getModel();
 
         try{
             String stat="no";
@@ -204,13 +204,8 @@ public class VotersList extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(VotersList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -228,6 +223,6 @@ public class VotersList extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable voterstable;
+    private javax.swing.JTable voterStable;
     // End of variables declaration//GEN-END:variables
 }
