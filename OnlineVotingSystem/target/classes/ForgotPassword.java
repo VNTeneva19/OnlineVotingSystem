@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ForgotPassword extends javax.swing.JFrame {
     /**
@@ -35,7 +32,6 @@ public class ForgotPassword extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        setLocationRelativeTo(null);
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -58,10 +54,9 @@ public class ForgotPassword extends javax.swing.JFrame {
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jLabel4.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
-        jLabel4.setText("ID Number");
+        jLabel4.setText("Username");
 
         idNumber.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
-        idNumber.addActionListener(this::idnumberActionPerformed);
 
         jbutton4.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jbutton4.setText("Login Menu");
@@ -70,7 +65,6 @@ public class ForgotPassword extends javax.swing.JFrame {
         pass.setEditable(false);
         pass.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pass.addActionListener(this::passActionPerformed);
 
         jLabel5.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,41 +133,35 @@ public class ForgotPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passActionPerformed
 
     private void jbutton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton4ActionPerformed
         setVisible(false);
         UserLogin info = new UserLogin();
         info.setVisible(true);
         info.setLocationRelativeTo(null);
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_jbutton4ActionPerformed
 
-    private void idnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idnumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idnumberActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         String id = idNumber.getText();
-        String search = "select password from account where id_number = '" + id + "'   ";
+        String search = "SELECT password FROM account WHERE student_name = ?";
+
         if (id.isEmpty()){
             JOptionPane.showMessageDialog(null,"Enter username");
         }
         else{
             try{
                 Connection con = getConnection();
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(search);
+                PreparedStatement pst = con.prepareStatement(search);
+                pst.setString(1, id); // Set the parameter value for the username
+                ResultSet rs = pst.executeQuery();
 
                 if(rs.next()){
                     pass.setText(rs.getString(1));
                 }
                 else if (!rs.next()){
-                    JOptionPane.showMessageDialog(null,"wrong ang id");
+                    JOptionPane.showMessageDialog(null,"This username does not exist!");
                 }
             }
             catch(Exception e){

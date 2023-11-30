@@ -60,22 +60,12 @@ public class AdminMenu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenu3);
 
-        jMenu4.setText("Voters Account");
-        jMenu4.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
-            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
-                jMenu4MenuKeyPressed(evt);
-            }
-            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
-            }
-            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
-            }
-        });
+        jMenu4.setText("Forgotten Password");
         jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu4MouseClicked(evt);
             }
         });
-        jMenu4.addActionListener(this::jMenu4ActionPerformed);
         jMenu1.add(jMenu4);
 
         jMenuBar1.add(jMenu1);
@@ -137,22 +127,15 @@ public class AdminMenu extends javax.swing.JFrame {
         setVisible(false);
         MainMenu main = new MainMenu();
         main.setVisible(true);
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jMenu3MouseClicked
 
-    private void jMenu4MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu4MenuKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu4MenuKeyPressed
-
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         setVisible(false);
         ForgotPassword info = new ForgotPassword();
+        info.setLocationRelativeTo(null);
         info.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenu4MouseClicked
 
     /**
