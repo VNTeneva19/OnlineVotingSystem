@@ -7,8 +7,10 @@ import java.sql.Statement;
 public class ResultVote extends javax.swing.JFrame {
 
     /**
-     * Creates new form voteresult
+     * Creates new form ResultVote
      */
+
+    Connection con;
     public ResultVote() {
         initComponents();
         setup();
@@ -17,7 +19,7 @@ public class ResultVote extends javax.swing.JFrame {
     public Connection getConnection(){
 
         try{                                                                        //username //database         =pass no password
-            Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/voting_system","root","");
+            con = DriverManager.getConnection("jdbc:sqlserver://SL152\\SQLEXPRESS;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin12345");
             return con;
         }
         catch(Exception e){

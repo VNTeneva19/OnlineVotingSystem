@@ -3,6 +3,7 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -23,8 +24,7 @@ public class AllData extends javax.swing.JFrame {
     public Connection getConnection(){
         try {
             // Establish the connection
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
-            return con; // Return the connection object after successful connection
+            con = DriverManager.getConnection("jdbc:sqlserver://SL152\\SQLEXPRESS;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin12345");            return con; // Return the connection object after successful connection
         } catch(Exception e)
         {
             e.printStackTrace();
@@ -97,7 +97,12 @@ public class AllData extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Go Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +138,13 @@ public class AllData extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(ActionEvent evt) {
+        setVisible(false);
+        AdminMenu info = new AdminMenu();
+        info.setVisible(true);
+        info.setLocationRelativeTo(null);
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 

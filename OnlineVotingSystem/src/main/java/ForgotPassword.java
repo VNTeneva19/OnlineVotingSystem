@@ -16,7 +16,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         try {
             // Establish the connection
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
+            con = DriverManager.getConnection("jdbc:sqlserver://SL152\\SQLEXPRESS;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin12345");
             return con; // Return the connection object after successful connection
         } catch(Exception e)
         {

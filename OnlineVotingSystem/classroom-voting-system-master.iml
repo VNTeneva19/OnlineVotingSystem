@@ -45,6 +45,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="sqljdbc_12.4.2.0_enu" level="project" />
     <orderEntry type="library" exported="" name="rs2xml" level="project" />
-    <orderEntry type="library" exported="" name="Maven: com.microsoft.sqlserver:mssql-jdbc:12.4.2.jre11" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:12.4.2.jre11" level="project" />
   </component>
 </module>

@@ -10,7 +10,7 @@ public class VotingSystem extends javax.swing.JFrame {
     PreparedStatement pst1,pst2,pst3,pst4,pst5,pst6;
 
     /**
-     * Creates new form voting
+     * Creates new form VotingSystem
      */
     public VotingSystem() {
         initComponents();
@@ -25,7 +25,7 @@ public class VotingSystem extends javax.swing.JFrame {
 
     public Connection getConnection(){
         try{                                                                        //username //database         =pass no password
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin");
+            con = DriverManager.getConnection("jdbc:sqlserver://SL152\\SQLEXPRESS;Database=voting_system;integratedSecurity=false;encrypt=false;", "admin", "admin12345");
             return con;
         }
         catch(Exception e){
