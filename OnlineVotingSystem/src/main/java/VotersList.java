@@ -65,6 +65,10 @@ public class VotersList extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +110,26 @@ public class VotersList extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Account");
+
+        jMenu3.setText("Logout");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu3);
+
+        jMenu4.setText("Forgotten Password");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu4);
+        jMenuBar1.add(jMenu1);
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,21 +197,31 @@ public class VotersList extends javax.swing.JFrame {
 
                 voters();
             }
-            else {
-                JOptionPane.showMessageDialog(null, "all is wrong");
-            }
         }
         catch(Exception e){
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        setVisible(false);
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
 
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        setVisible(false);
+        ForgotPassword info = new ForgotPassword();
+        info.setLocationRelativeTo(null);
+        info.setVisible(true);
+    }//GEN-LAST:event_jMenu4MouseClicked
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         int T = voterStable.getSelectedRow();
         TableModel Model = voterStable.getModel();
 
-        try{
+        try {
             String stat="no";
             String sql ="UPDATE account SET status='"+stat+"' WHERE student_name = '"+Model.getValueAt(T,0)+"' ";
             Connection con = getConnection();
@@ -197,8 +231,8 @@ public class VotersList extends javax.swing.JFrame {
             voters();
         }
         catch(Exception e){
+            e.printStackTrace();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -236,6 +270,10 @@ public class VotersList extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTable voterStable;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,9 +26,6 @@ public class AdminMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +49,6 @@ public class AdminMenu extends javax.swing.JFrame {
             info.setVisible(true);
             info.setLocationRelativeTo(null);
         });
-
-        jButton4.setText("VOTERS  TIME RECORD");
-
         jMenu1.setText("Account");
 
         jMenu3.setText("Logout");
@@ -72,19 +66,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenu4);
-
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-
-        jMenu5.setText("About");
-        jMenu2.add(jMenu5);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu6.setText("jMenu6");
-        jMenuBar1.add(jMenu6);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,11 +152,8 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

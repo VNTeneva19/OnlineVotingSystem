@@ -127,9 +127,9 @@ public class VotingSystem extends javax.swing.JFrame {
         treasurerCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
         getContentPane().add(treasurerCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(250), Spring.constant(185), Spring.constant(35)));
 
-        //presidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        presidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
         presidentCB.addActionListener(this::presidentCBActionPerformed);
-        //getContentPane().add(presidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(70), Spring.constant(185), Spring.constant(35)));
+        getContentPane().add(presidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(70), Spring.constant(185), Spring.constant(35)));
 
         jLabel3.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel3.setText("Treasurer");
@@ -139,25 +139,25 @@ public class VotingSystem extends javax.swing.JFrame {
         jLabel4.setText("Vice PRESIDENT");
         getContentPane().add(jLabel4, new SpringLayout.Constraints(Spring.constant(0), Spring.constant(150), Spring.constant(-1), Spring.constant(-1)));
 
-        //vicePresidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        //getContentPane().add(vicePresidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(140), Spring.constant(185), Spring.constant(35)));
+        vicePresidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        getContentPane().add(vicePresidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(140), Spring.constant(185), Spring.constant(35)));
 
-        //secretaryCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        //getContentPane().add(secretaryCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(200), Spring.constant(185), Spring.constant(35)));
+        secretaryCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        getContentPane().add(secretaryCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(200), Spring.constant(185), Spring.constant(35)));
 
         jLabel5.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel5.setText("Auditor");
         getContentPane().add(jLabel5, new SpringLayout.Constraints(Spring.constant(400), Spring.constant(320), Spring.constant(-1), Spring.constant(-1)));
 
-        //auditorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        //getContentPane().add(auditorCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(310), Spring.constant(185), Spring.constant(35)));
+        auditorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        getContentPane().add(auditorCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(310), Spring.constant(185), Spring.constant(35)));
 
         jLabel6.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel6.setText("PRESIDENT");
         getContentPane().add(jLabel6, new SpringLayout.Constraints(Spring.constant(60), Spring.constant(70), Spring.constant(-1), Spring.constant(-1)));
 
-        //pioCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        //getContentPane().add(pioCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(370), Spring.constant(185), Spring.constant(35)));
+        pioCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        getContentPane().add(pioCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(370), Spring.constant(185), Spring.constant(35)));
 
         jLabel7.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel7.setText("P.I.O");

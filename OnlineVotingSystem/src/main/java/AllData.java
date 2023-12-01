@@ -62,6 +62,11 @@ public class AllData extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,18 +89,10 @@ public class AllData extends javax.swing.JFrame {
         jScrollPane1.setViewportView(candidateTL);
 
         jButton1.setText("Clear All");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.addActionListener(evt -> jButton1ActionPerformed(evt));
 
         jButton2.setText("Clear");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(evt -> jButton2ActionPerformed(evt));
 
         jButton3.setText("Go Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +100,26 @@ public class AllData extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Account");
+
+        jMenu3.setText("Logout");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu3);
+
+        jMenu4.setText("Forgotten Password");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu4);
+        jMenuBar1.add(jMenu1);
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,30 +165,36 @@ public class AllData extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int zero =0;
-        String sql ="UPDATE candidate set points="+zero;
-
-        try{
+        String updateQuery ="UPDATE candidate set points = 0";
+        try {
             Connection con = getConnection();
-            ResultSet rs;
             Statement st;
             st = con.createStatement();
-            st.executeUpdate(sql);
+            st.executeUpdate(updateQuery);
+            candidate();
+            JOptionPane.showMessageDialog(null, "All of the points are deleted");
             candidate();
 
-            if (st==st){
-                JOptionPane.showMessageDialog(null, "all is clear");
-                candidate();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "all is wrong");
-            }
         }
-        catch(Exception e){
+        catch(Exception e) {
+            e.printStackTrace();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        setVisible(false);
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
 
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        setVisible(false);
+        ForgotPassword info = new ForgotPassword();
+        info.setLocationRelativeTo(null);
+        info.setVisible(true);
+    }//GEN-LAST:event_jMenu4MouseClicked
     private void candidateTLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_candidateTLMouseClicked
 
         int T = candidateTL.getSelectedRow();
@@ -182,19 +205,18 @@ public class AllData extends javax.swing.JFrame {
 
         int T = candidateTL.getSelectedRow();
         TableModel Model =candidateTL.getModel();
-        String pass = null;
 
         try{
             int zero =0;
-            String sql ="UPDATE candidate set points='"+zero+"'  WHERE candidate_id='"+Model.getValueAt(T,0)+"'   ";
+            String sql ="UPDATE candidate set points='"+zero+"'  WHERE id_number = '"+Model.getValueAt(T,0)+"'";
             Connection con = getConnection();
             Statement st = con.createStatement();
             st.executeUpdate(sql);
             candidate();
         }
         catch(Exception e){
+            e.printStackTrace();
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -224,6 +246,10 @@ public class AllData extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable candidateTL;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
