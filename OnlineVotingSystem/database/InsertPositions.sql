@@ -1,20 +1,20 @@
 USE voting_system
 
 INSERT INTO positions([name])
-VALUES ('president')
+VALUES ('President')
 
 INSERT INTO positions([name])
-VALUES ('vicepresident')
+VALUES ('Vice President')
 
 INSERT INTO positions([name])
-VALUES ('secretary')
+VALUES ('Secretary')
 
 INSERT INTO positions([name])
-VALUES ('treasurer')
+VALUES ('Treasurer')
 
 INSERT INTO positions([name])
-VALUES ('auditor')
+VALUES ('Auditor')
 
 INSERT INTO positions([name])
-VALUES ('pio')
+VALUES ('P.I.O')
 
