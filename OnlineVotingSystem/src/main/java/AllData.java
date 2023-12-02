@@ -4,10 +4,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AllData extends javax.swing.JFrame {
 
@@ -33,18 +30,20 @@ public class AllData extends javax.swing.JFrame {
     }
 
     public void candidate(){
-        String sql ="SELECT * FROM candidate";
+        String selectQuery = "SELECT c.id_number AS 'ID', c.candidate_name AS 'Candidate Name',c.username AS 'Username', c.points AS 'Points',  p.name AS 'Position' " +
+                "FROM candidate c " +
+                "INNER JOIN positions p ON c.position_id = p.id_number";
 
         try{
             Connection con = getConnection();
-            ResultSet Rs;
+            ResultSet resultSet;
             Statement st;
             st= con.createStatement();
-            Rs = st.executeQuery(sql);
-
-            candidateTL.setModel(DbUtils.resultSetToTableModel(Rs));
+            resultSet = st.executeQuery(selectQuery);
+            candidateTL.setModel(DbUtils.resultSetToTableModel(resultSet));
         }
         catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -58,7 +57,6 @@ public class AllData extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        candidateTL = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -66,26 +64,16 @@ public class AllData extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
-
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        javax.swing.table.DefaultTableModel defaultTableModel = new javax.swing.table.DefaultTableModel();
+        candidateTL = new javax.swing.JTable(defaultTableModel);
 
-        candidateTL.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {},
-                        {},
-                        {},
-                        {}
-                },
-                new String [] {
-
-                }
-        ));
         candidateTL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 candidateTLMouseClicked(evt);
             }
         });
+
         jScrollPane1.setViewportView(candidateTL);
 
         jButton1.setText("Clear All");
@@ -95,11 +83,7 @@ public class AllData extends javax.swing.JFrame {
         jButton2.addActionListener(evt -> jButton2ActionPerformed(evt));
 
         jButton3.setText("Go Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        jButton3.addActionListener(evt -> jButton3ActionPerformed(evt));
 
         jMenu1.setText("Account");
 
