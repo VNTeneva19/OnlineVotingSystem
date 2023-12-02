@@ -16,7 +16,6 @@ public class AdminMenu extends javax.swing.JFrame {
      */
 
     private void initComponents() {
-
         // Variables declaration - do not modify//GEN-BEGIN:variables
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -26,8 +25,13 @@ public class AdminMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-
+        jLabel1 = new javax.swing.JLabel();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1.setFont(new java.awt.Font("Courier New", Font.BOLD, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ADMIN MENU");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(150, 100, 560, 55);
 
         jButton1.setFont(new java.awt.Font("Tahoma", Font.BOLD, 18)); // NOI18N
         jButton1.setText("WINNERS");
@@ -80,23 +84,22 @@ public class AdminMenu extends javax.swing.JFrame {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(66, 66, 66)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31))
+                                .addGap(74, 74, 74))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(294, 294, 294))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
+                                .addContainerGap(110, Short.MAX_VALUE)
+                                .addGap(110, 110, 110)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(140, 140, 140)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(140, Short.MAX_VALUE))
+                                .addGap(108, 108, 108)
+                                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,6 +150,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

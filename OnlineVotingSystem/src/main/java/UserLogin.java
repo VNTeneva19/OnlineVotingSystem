@@ -132,7 +132,7 @@ public class UserLogin extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)
-                                .addContainerGap(153, Short.MAX_VALUE))
+                                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,7 +198,9 @@ public class UserLogin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1MouseClicked
 
-
+    public JTextField getUserText() {
+        return userText;
+    }
     private void jButton2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton2InputMethodTextChanged
         String passId = userText.getText();
         String login = "SELECT * FROM account WHERE student_name = ? AND password = ? AND status = 'no'";

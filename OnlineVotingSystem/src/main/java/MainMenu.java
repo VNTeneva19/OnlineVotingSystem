@@ -103,22 +103,17 @@ public class MainMenu extends javax.swing.JFrame {
         jButton2.setText("ADMIN");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         getContentPane().add(jButton2);
-        jButton2.setBounds(560, 550, 190, 60);
+        jButton2.setBounds(556, 550, 190, 60);
 
-//        jButton1.setIcon(new javax.swing.ImageIcon("/icons/login.png")); // NOI18N
+
         jButton1.setToolTipText("LOGIN");
         jButton1.setOpaque(false);
         jButton1.setFont(new java.awt.Font("Courier New", Font.BOLD, 30));
-        jButton1.setText("VOTE NOW!");
+        jButton1.setText("VOTE NOW");
         jButton1.addActionListener(this::jButton1ActionPerformed);
         getContentPane().add(jButton1);
         jButton1.setBounds(530, 310, 250, 100);
 
-//        jLabel6.setFont(new java.awt.Font("Courier New", Font.BOLD, 30)); // NOI18N
-//        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//        jLabel6.setText("VOTE NOW!");
-//        getContentPane().add(jLabel6);
-//        jLabel6.setBounds(610, 400, 190, 80);
 
 
         pack();

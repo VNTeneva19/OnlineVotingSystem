@@ -36,7 +36,7 @@ public class VotersList extends javax.swing.JFrame {
 
     public void voters(){
 
-        String sql ="SELECT student_name,status FROM account";
+        String sql ="SELECT student_name AS 'Student Name',status AS 'Status' FROM account";
 
         try{
             Connection con = getConnection();

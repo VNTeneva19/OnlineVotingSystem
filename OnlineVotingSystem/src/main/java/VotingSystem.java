@@ -86,7 +86,7 @@ public class VotingSystem extends javax.swing.JFrame {
      */
     private void initComponents() {
 
-        setSize(800,700);
+        setSize(600,700);
         setLocationRelativeTo(null);
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -99,199 +99,251 @@ public class VotingSystem extends javax.swing.JFrame {
         JLabel jLabel5 = new JLabel();
         JLabel jLabel6 = new JLabel();
         JLabel jLabel7 = new JLabel();
+        JLabel jLabel = new JLabel();
         JButton jButton1 = new JButton();
-        idReceive = new javax.swing.JTextField();
+        JButton jButton2 = new JButton();
+        JButton jButton3 = new JButton();
+        JButton jButton4 = new JButton();
+        JButton jButton5 = new JButton();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        idReceive = new javax.swing.JLabel();
         presidentCB = new javax.swing.JComboBox<>();
         vicePresidentCB = new javax.swing.JComboBox<>();
         secretaryCB = new javax.swing.JComboBox<>();
         treasurerCB = new javax.swing.JComboBox<>();
         auditorCB = new javax.swing.JComboBox<>();
         pioCB = new javax.swing.JComboBox<>();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new SpringLayout());
 
+        jLabel.setFont(new java.awt.Font("Courier New", Font.BOLD, 26));
+        jLabel.setText("VOTING SYSTEM");
+        getContentPane().add(jLabel, new SpringLayout.Constraints(Spring.constant(200), Spring.constant(-90), Spring.constant(300), Spring.constant(300)));
+        jLabel2.setFont(new java.awt.Font("Courier New", Font.PLAIN, 18)); // NOI18N
+        jLabel2.setText("You're logged in as: ");
+        getContentPane().add(jLabel2, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(-60), Spring.constant(300), Spring.constant(300)));
+        idReceive.setFont(new java.awt.Font("Courier New", Font.PLAIN, 18));
+        getContentPane().add(idReceive, new SpringLayout.Constraints(Spring.constant(380), Spring.constant(-5), Spring.constant(190), Spring.constant(190)));
+
+        jLabel6.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
+        jLabel6.setText("President");
+        getContentPane().add(jLabel6, new SpringLayout.Constraints(Spring.constant(240), Spring.constant(-30), Spring.constant(300), Spring.constant(300)));
+        presidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select President" }));
+        getContentPane().add(presidentCB, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(130), Spring.constant(185), Spring.constant(35)));
+        jButton1.setText("Vote now");
+        jButton1.addActionListener(this::presidentButtonActionPerformed);
+        getContentPane().add(jButton1, new SpringLayout.Constraints(Spring.constant(350), Spring.constant(130), Spring.constant(110), Spring.constant(35)));
+
+        jLabel4.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
+        jLabel4.setText("Vice President");
+        getContentPane().add(jLabel4, new SpringLayout.Constraints(Spring.constant(200), Spring.constant(40), Spring.constant(300), Spring.constant(300)));
+        vicePresidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vice President" }));
+        getContentPane().add(vicePresidentCB, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(200), Spring.constant(185), Spring.constant(35)));
+        jButton2.setText("Vote now");
+        jButton2.addActionListener(this::vicePresidentButtonActionPerformed);
+        getContentPane().add(jButton2, new SpringLayout.Constraints(Spring.constant(350), Spring.constant(200), Spring.constant(110), Spring.constant(35)));
+
         jLabel1.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel1.setText("Secretary");
-        getContentPane().add(jLabel1, new SpringLayout.Constraints(Spring.constant(70), Spring.constant(210), Spring.constant(-1), Spring.constant(-1)));
-
-        jButton1.setText("Vote now");
-        jButton1.addActionListener(this::jButton2ActionPerformed);
-        getContentPane().add(jButton1, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(460), Spring.constant(110), Spring.constant(60)));
-        getContentPane().add(idReceive, new SpringLayout.Constraints(Spring.constant(358), Spring.constant(27), Spring.constant(190), Spring.constant(-1)));
-
-        jLabel2.setFont(new java.awt.Font("Courier New", Font.BOLD, 18)); // NOI18N
-        jLabel2.setText("STUDENT ID NUMBER");
-        getContentPane().add(jLabel2, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(20), Spring.constant(-1), Spring.constant(29)));
-
-        treasurerCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        getContentPane().add(treasurerCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(250), Spring.constant(185), Spring.constant(35)));
-
-        presidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        presidentCB.addActionListener(this::presidentCBActionPerformed);
-        getContentPane().add(presidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(70), Spring.constant(185), Spring.constant(35)));
+        getContentPane().add(jLabel1, new SpringLayout.Constraints(Spring.constant(240), Spring.constant(110), Spring.constant(300), Spring.constant(300)));
+        secretaryCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Secretary" }));
+        getContentPane().add(secretaryCB, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(270), Spring.constant(185), Spring.constant(35)));
+        jButton3.setText("Vote now");
+        jButton3.addActionListener(this::secretaryButtonActionPerformed);
+        getContentPane().add(jButton3, new SpringLayout.Constraints(Spring.constant(350), Spring.constant(270), Spring.constant(110), Spring.constant(35)));
 
         jLabel3.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel3.setText("Treasurer");
-        getContentPane().add(jLabel3, new SpringLayout.Constraints(Spring.constant(70), Spring.constant(260), Spring.constant(-1), Spring.constant(-1)));
-
-        jLabel4.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
-        jLabel4.setText("Vice PRESIDENT");
-        getContentPane().add(jLabel4, new SpringLayout.Constraints(Spring.constant(0), Spring.constant(150), Spring.constant(-1), Spring.constant(-1)));
-
-        vicePresidentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        getContentPane().add(vicePresidentCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(140), Spring.constant(185), Spring.constant(35)));
-
-        secretaryCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        getContentPane().add(secretaryCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(200), Spring.constant(185), Spring.constant(35)));
+        getContentPane().add(jLabel3, new SpringLayout.Constraints(Spring.constant(240), Spring.constant(180), Spring.constant(300), Spring.constant(300)));
+        treasurerCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Treasurer" }));
+        getContentPane().add(treasurerCB, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(340), Spring.constant(185), Spring.constant(35)));
+        jButton4.setText("Vote now");
+        jButton4.addActionListener(this::treasurerButtonActionPerformed);
+        getContentPane().add(jButton4, new SpringLayout.Constraints(Spring.constant(350), Spring.constant(340), Spring.constant(110), Spring.constant(35)));
 
         jLabel5.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
         jLabel5.setText("Auditor");
-        getContentPane().add(jLabel5, new SpringLayout.Constraints(Spring.constant(400), Spring.constant(320), Spring.constant(-1), Spring.constant(-1)));
+        getContentPane().add(jLabel5, new SpringLayout.Constraints(Spring.constant(250), Spring.constant(300), Spring.constant(200), Spring.constant(200)));
+        auditorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Auditor" }));
+        getContentPane().add(auditorCB, new SpringLayout.Constraints(Spring.constant(150), Spring.constant(410), Spring.constant(185), Spring.constant(35)));
+        jButton5.setText("Vote now");
+        jButton5.addActionListener(this::auditorButtonActionPerformed);
+        getContentPane().add(jButton5, new SpringLayout.Constraints(Spring.constant(350), Spring.constant(410), Spring.constant(110), Spring.constant(35)));
 
-        auditorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        getContentPane().add(auditorCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(310), Spring.constant(185), Spring.constant(35)));
+        jMenu1.setText("Account");
 
-        jLabel6.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
-        jLabel6.setText("PRESIDENT");
-        getContentPane().add(jLabel6, new SpringLayout.Constraints(Spring.constant(60), Spring.constant(70), Spring.constant(-1), Spring.constant(-1)));
+        jMenu3.setText("Logout");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenu3);
 
-        pioCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
-        getContentPane().add(pioCB, new SpringLayout.Constraints(Spring.constant(210), Spring.constant(370), Spring.constant(185), Spring.constant(35)));
-
-        jLabel7.setFont(new java.awt.Font("Courier New", Font.BOLD, 24)); // NOI18N
-        jLabel7.setText("P.I.O");
-        getContentPane().add(jLabel7, new SpringLayout.Constraints(Spring.constant(130), Spring.constant(370), Spring.constant(-1), Spring.constant(-1)));
-
+        jMenuBar1.add(jMenu1);
+        setJMenuBar(jMenuBar1);
 //        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+    // Button 1 - President
+    private void presidentButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String prs = Objects.requireNonNull(presidentCB.getSelectedItem()).toString();
-        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+prs+"' ";
-        if (presidentCB.getSelectedItem().toString().equals(prs)){
+        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name = ?";
 
+        if (presidentCB.getSelectedItem().toString().equals(prs)) {
             try {
                 Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updatePres);
-                state.execute(updatePres);
-            }
+                PreparedStatement state = con.prepareStatement(updatePres);
+                state.setString(1, prs); // Set the parameter value
 
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
+                int rowsUpdated = state.executeUpdate();
+                if (rowsUpdated > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(null, "Vote counted for president: " + prs);
+                } else {
+                    // No rows affected
+                    JOptionPane.showMessageDialog(null, "No rows updated");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // JOptionPane.showMessageDialog(null, "Voted wrong!");
             }
         }
+        updateVoterStatus();
+    }
 
-        String vrs = Objects.requireNonNull(vicePresidentCB.getSelectedItem()).toString();
-        String updateVice = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+vrs+"' ";
+    // Button 2 - Vice President
+    private void vicePresidentButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String prs = Objects.requireNonNull(vicePresidentCB.getSelectedItem()).toString();
+        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name = ?";
 
-        if (vicePresidentCB.getSelectedItem()==vrs){
-            try{
+        if (vicePresidentCB.getSelectedItem().toString().equals(prs)) {
+            try {
                 Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updateVice);
-                state.execute(updateVice);
+                PreparedStatement state = con.prepareStatement(updatePres);
+                state.setString(1, prs); // Set the parameter value
+
+                int rowsUpdated = state.executeUpdate();
+                if (rowsUpdated > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(null, "Vote counted for vice president: " + prs);
+                } else {
+                    // No rows affected
+                    JOptionPane.showMessageDialog(null, "No rows updated");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // JOptionPane.showMessageDialog(null, "Voted wrong!");
             }
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
-            }
         }
+        updateVoterStatus();
+    }
 
-        String ids=idReceive.getText();
-        String updateId="Yes";
-        String voters ="UPDATE account SET status = '"+updateId+"' WHERE id_number ='"+ids+"' ";
+    // Button 3 - Secretary
+    private void secretaryButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String prs = Objects.requireNonNull(secretaryCB.getSelectedItem()).toString();
+        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name = ?";
 
-        try {
-            Connection con = getConnection();
-            Statement stateId;
-            stateId =con.prepareStatement(voters);
-            stateId.execute(voters);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-
-        String sec = Objects.requireNonNull(secretaryCB.getSelectedItem()).toString();
-        String updateSec = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+sec+"' ";
-        if (secretaryCB.getSelectedItem()==sec){
-            try{
+        if (secretaryCB.getSelectedItem().toString().equals(prs)) {
+            try {
                 Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updateSec);
-                state.execute(updateSec);
-            }
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
+                PreparedStatement state = con.prepareStatement(updatePres);
+                state.setString(1, prs); // Set the parameter value
+
+                int rowsUpdated = state.executeUpdate();
+                if (rowsUpdated > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(null, "Vote counted for secretary: " + prs);
+                } else {
+                    // No rows affected
+                    JOptionPane.showMessageDialog(null, "No rows updated");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // JOptionPane.showMessageDialog(null, "Voted wrong!");
             }
         }
+        updateVoterStatus();
+    }
 
-        String tres = Objects.requireNonNull(treasurerCB.getSelectedItem()).toString();
-        String updateTres = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+tres+"' ";
-        if (treasurerCB.getSelectedItem()==tres){
+    // Button 4 - Treasurer
+    private void treasurerButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String prs = Objects.requireNonNull(treasurerCB.getSelectedItem()).toString();
+        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name = ?";
 
-            try{
+        if (treasurerCB.getSelectedItem().toString().equals(prs)) {
+            try {
                 Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updateTres);
-                state.execute(updateTres);
-            }
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
+                PreparedStatement state = con.prepareStatement(updatePres);
+                state.setString(1, prs); // Set the parameter value
+
+                int rowsUpdated = state.executeUpdate();
+                if (rowsUpdated > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(null, "Vote counted for treasurer: " + prs);
+                } else {
+                    // No rows affected
+                    JOptionPane.showMessageDialog(null, "No rows updated");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // JOptionPane.showMessageDialog(null, "Voted wrong!");
             }
         }
+        updateVoterStatus();
+    }
 
-        String aud = Objects.requireNonNull(auditorCB.getSelectedItem()).toString();
-        String updateAud = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+aud+"' ";
-        if (auditorCB.getSelectedItem()==aud){
-            try{
+    // Button 5 - Auditor
+    private void auditorButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        String prs = Objects.requireNonNull(auditorCB.getSelectedItem()).toString();
+        String updatePres = "UPDATE candidate SET points = points + 1 WHERE candidate_name = ?";
+
+        if (auditorCB.getSelectedItem().toString().equals(prs)) {
+            try {
                 Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updateAud);
-                state.execute(updateAud);
-            }
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
+                PreparedStatement state = con.prepareStatement(updatePres);
+                state.setString(1, prs); // Set the parameter value
+
+                int rowsUpdated = state.executeUpdate();
+                if (rowsUpdated > 0) {
+                    // Update successful
+                    JOptionPane.showMessageDialog(null, "Vote counted for auditor: " + prs);
+                } else {
+                    // No rows affected
+                    JOptionPane.showMessageDialog(null, "No rows updated");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // JOptionPane.showMessageDialog(null, "Voted wrong!");
             }
         }
+        updateVoterStatus();
+    }
 
-        String pio = Objects.requireNonNull(pioCB.getSelectedItem()).toString();
-        String updatePio = "UPDATE candidate SET points = points + 1 WHERE candidate_name ='"+pio+"' ";
-        if (pioCB.getSelectedItem()==pio){
-            try{
-                Connection con = getConnection();
-                Statement state;
-                state =con.prepareStatement(updatePio);
-                state.execute(updatePio);
-            }
-            catch(Exception e) {
-                JOptionPane.showMessageDialog(null,"Voted wrong!");
-            }
-        }
 
+    private void updateVoterStatus() {
         String id = idReceive.getText();
         Connection con = getConnection();
-        try{
-            String status="yes";
-            String search ="select student_name from account where id_number='"+id+"'";
-            String updateStatus ="UPDATE account set status='"+status+"'   where id_number='"+id+"'  ";
-            Statement searchStudent = con.createStatement();
-            searchStudent.executeQuery(search);
+        try {
+            String status = "yes";
+            String updateStatus = "UPDATE account SET status = '" + status + "' WHERE id_number = '" + id + "'";
             Statement studentUpdate = con.createStatement();
             studentUpdate.executeUpdate(updateStatus);
-            JOptionPane.showMessageDialog(null,"Thank you!");
+            JOptionPane.showMessageDialog(null, "Thank you for your vote!");
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "Voted wrong!");
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Voted wrong!");
-        }
-        JOptionPane.showMessageDialog(null,"Thank you for your vote!");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }
 
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        setVisible(false);
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
 
-    private void presidentCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presidentCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_presidentCBActionPerformed
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -315,11 +367,15 @@ public class VotingSystem extends javax.swing.JFrame {
     }
 
     private javax.swing.JComboBox<String> auditorCB;
-    private javax.swing.JTextField idReceive;
+    private javax.swing.JLabel idReceive;
     private javax.swing.JComboBox<String> pioCB;
     private javax.swing.JComboBox<String> presidentCB;
     private javax.swing.JComboBox<String> secretaryCB;
     private javax.swing.JComboBox<String> treasurerCB;
     private javax.swing.JComboBox<String> vicePresidentCB;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

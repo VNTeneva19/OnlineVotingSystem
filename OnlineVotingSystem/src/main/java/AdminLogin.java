@@ -98,10 +98,10 @@ public class AdminLogin extends javax.swing.JFrame {
                                                 .addGap(202, 202, 202))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(269, 269, 269))
+                                                .addGap(303, 303, 303))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addComponent(jButton2)
-                                                .addGap(290, 290, 290))))
+                                                .addGap(310, 310, 310))))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
